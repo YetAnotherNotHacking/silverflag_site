@@ -1,254 +1,90 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import './styles/generic.css';
 
-* {box-sizing: border-box; font-family: 'Space Grotesk';}
-
-body[data-theme='normal'] {
-    --bg: rgb(33, 33, 39);
-    --text: #fff;
-    --primary-light: #d4ffc9;
-    --primary: #33ff00;
-    --primary-dark: #041400;
-}
-html, body {
-    margin: 0;
-    font-family: 'Space Grotesk';
-    background-color: var(--bg);
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-* {
-    box-sizing: border-box;
-    color: var(--text)
-}
-.column { 
-    float: left;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    margin-top: 5vh;
-    height: 100vh;
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 5px solid var(--text);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  background: var(--bg);
+  width: 100vw;
+  height: 5rem;
+  top: 0;
 }
 
-/* text */
-
-.text {
-    margin-top: 15vh;
-    padding: 40px;
+#logo {
+  text-transform: uppercase;
+  font-size: 1.75rem;
+  font-weight: 900;
 }
 
-.title {
-    font-size: 5rem;
-    font-weight: 700;
-    margin-bottom: 0px;
-}
-.subtitle {
-    margin-top: 0px;
-    font-size: 2rem;
-    font-weight: 300;
-    margin-bottom: 20px;
-}
-.dot {
-    color: var(--primary);
-    font-size: 3rem;
-}
-.buttons {
-    display: flex;
-    gap: 10%;
-    align-items: center;
-    margin-bottom: 20px;
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
 }
 
+nav ul li {
+  position: relative;
+}
+
+nav ul li::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -1.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--text);
+  transform: translate(-50%, -50%);
+}
+
+nav ul li:last-child::after {
+  display: none;
+}
+
+nav button {
+  border-radius: 10000vw;
+  color: var(--text);
+  background-color: var(--accent);
+  padding: 0.5rem 1.75rem;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  place-items: center;
+  height: calc(100vh - 5rem);
+  width: 95vw;
+  margin: 5rem auto;
+}
+
+header > * {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  width: 50%;
+}
 button {
-    background-color: var(--bg);
-    border: 2px var(--primary) solid;
-    padding: 15px 70px;
-    font-size: 1.4rem;
-    cursor: pointer;
-    transition: all .5s ease-out;
-    transition-delay: .3s;
-    font-family: 'Space Grotesk';
-    font-weight: 500;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    -webkit-transition-property: color;
-    transition-property: color;
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-}
-button::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 1px;
-    -webkit-transform: scaleX(0);
-    transform: scaleX(0);
-    -webkit-transform-origin: left;
-    transform-origin: left;
-    -webkit-transition-property: transform;
-    transition-property: transform;
-    -webkit-transition-duration: 0.6s;
-    transition-duration: 0.6s;
-    -webkit-transition-timing-function: ease-in-out;
-    transition-timing-function: ease-in-out;
-}
-button:hover::before {
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
-    background-color: var(--primary);
-}
-button:hover {
-    color: var(--bg);
-} 
-button::after {
-    -webkit-transform: scaleX(0);
-    transform: scaleX(0);
- }
-button:active {
-    transition: transform 0.2s ease-in-out;
-    transform: scale(0.95);
-}
-/* image */
-
-.image {
-    display: none;
-}
-.flag {
-    margin-left: 110px;
-    width: 400px;
-    height: 200px;
-    background-color: var(--primary-light);
-    border-radius: 10px;
-    border-bottom-right-radius: 0;
-}
-.pole {
-    width: 20px;
-    height: 2000px;
-    background-color: var(--primary-light);
-
-    margin-left: 490px;
-    position: absolute;
+  border-radius: 0.5rem;
+  background: var(--secondary);
 }
 
-/* responsiveness */
+#chat {
+  background: var(--primary);
+}
 
-@media screen and (max-height: 500px) {
-    .text {
-        margin-top: 0;
-    }
+.buttons {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
 }
-@media screen and (max-width: 1160px) {
-    .image {
-        display: none;
-    }
-    .flag {
-        display: none;
-    }
-    .pole {
-        display: none;
-    }
-    .text {
-        width: 100%;
-        align-items: center;
-    }
-    button {
-        text-wrap: nowrap;
-    }
-    .title {
-        font-size: 5rem;
-    }
-}
-@media screen and (max-width: 510px) {
-    .buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-    button {
-        margin-bottom: 20px;
-        width: 90vw;
-    }
-}
-.mobile {
-    display: none;
-}
-@media screen and (max-width: 500px) {
-    .text {
-        margin-top: 6vh;
-    }
-    .subtitle {
-        text-align: center;
-        font-size: 7vw;
-    }
-    .word {
-        border-bottom: 3px var(--primary) solid;
-    }
-    .dot {
-        display: none;
-    }
-    .mobile {
-        display: inline;
-        visibility: hidden;
-    }
-    .ms {
-        white-space: pre-line;
-    }
-    .title {
-        font-size: 15vw;
-    }
-}
-@media screen and (max-width: 430px) {
-    .text {
-        margin-top: 10vh;
-    }
-}
-main {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    align-items: center;
-}
-.bg {
-    position: absolute;
-    width: 150ch;
-    z-index: 69;
-    text-wrap: wrap;
-    word-wrap: break-word;
 
-    color: var(--primary);
-    filter: blur(10px) brightness(0.3) saturate(1.5);
-    
-    transition: all .2s ease-in-out;
-}
-.bg:hover {
-    color: var(--primary);
-    filter: blur(0px) brightness(0.3) saturate(1.5);
-}
-.section {
-    padding: 70px;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--bg);
-    z-index: 70;
-    border-top: 1px var(--text) solid;
-}
-.s-title {
-    font-size: 2.5rem;
-    font-weight: 300;
-    margin-bottom: 7px;
-}
-.s-text {
-    font-size: 1rem;
-    font-weight: 300;
-    margin-top: 0px;
-    margin-bottom: 20px;
-}
-.aka {
-    color: var(--primary);
-}
-a {
-    text-decoration: none;
+.buttons > button {
+  width: 100%;
 }
