@@ -14,6 +14,10 @@ nav {
   top: 0;
 }
 
+h1 {
+  text-wrap: balance;
+}
+
 #logo {
   text-transform: uppercase;
   font-size: 1.75rem;
@@ -68,7 +72,8 @@ header > * {
   flex-direction: column;
   gap: 1rem;
   justify-content: center;
-  width: 50%;
+  width: 100%;
+  max-width: 32em;
 }
 button {
   border-radius: 0.5rem;
