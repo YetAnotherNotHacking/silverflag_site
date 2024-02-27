@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import './scroll.css';
+/* @import './debug.css'; */
+
 *,
 *::before,
 *::after {
@@ -8,23 +11,22 @@
 :root {
   --text: #e6ffe6;
   --bg: #07060e;
-  --primary: #2b3a42;
-  --secondary: #62a264;
+  --primary: #62a264;
+  --secondary: #2b3a42;
   --accent: #0084cb;
 }
 html,
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', 'Roboto', sans-serif;
+  font-family: 'Poppins', 'Inter', 'Roboto', sans-serif;
   font-size: 16px;
   line-height: 1.6;
   color: var(--text);
-  background-color: var(--bg);
+  background: var(--bg);
   width: 100vw;
   min-height: 100vh;
-  /* TODO */
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 img {
@@ -32,7 +34,8 @@ img {
   max-width: 100%;
 }
 
-a {
+a,
+.name {
   text-decoration: none;
   color: var(--text);
   position: relative;
@@ -40,7 +43,8 @@ a {
   font-weight: 700;
 }
 
-a::after {
+a::after,
+.name::after {
   content: '';
   position: absolute;
   bottom: -0.15rem;
@@ -55,7 +59,12 @@ a::after {
   cursor: pointer;
 }
 
-a:hover::after {
+.name::after {
+  bottom: 0;
+}
+
+a:hover::after,
+.name:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
@@ -89,10 +98,12 @@ p {
 
 .work-in-progress-banner {
   position: fixed;
-  bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.25rem;
+  bottom: 0;
   left: 0;
   width: 100vw;
   text-align: center;
   font-weight: 700 !important;
-  opacity: 0.8;
+  background: var(--bg);
 }
